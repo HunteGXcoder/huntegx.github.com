@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Tokens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .total {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Buy Tokens</h1>
+
+    <label for="tokenAmount">Enter the number of tokens:</label>
+    <input type="number" id="tokenAmount" min="1" value="1" oninput="calculateTotal()">
+
+    <p class="total">Total Price: $<span id="totalPrice">10.00</span></p>
+
+    <button class="button" onclick="buyTokens()">Buy Tokens</button>
+</div>
+
+<script>
+    const tokenPrice = 10.00; // Price per token
+
+    function calculateTotal() {
+        const tokenAmount = document.getElementById('tokenAmount').value;
+        const totalPrice = tokenAmount * tokenPrice;
+        document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
+    }
+
+    function buyTokens() {
+        const tokenAmount = document.getElementById('tokenAmount').value;
+        const totalPrice = (tokenAmount * tokenPrice).toFixed(2);
+
+        alert(`You are buying ${tokenAmount} tokens for $${totalPrice}.`);
+
+        // You would integrate your payment gateway API here (like Stripe, PayPal, etc.)
+    }
+</script>
+
+</body>
+</html>
